@@ -1,0 +1,47 @@
+package com.zeus.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.java.Log;
+
+@Log
+@Controller
+@RequestMapping(value="/board")
+public class BoardController {
+	
+	@RequestMapping(value="/insert")
+	public String insert() {
+		return "board/insert";
+	}
+	
+	@RequestMapping(value="/select")
+	public String select1(Model model) {
+		model.addAttribute("boardNo","해당된 번호가 없음");
+		return "board/select";
+	}
+	
+	@RequestMapping(value="/select/{boardNo}")
+	public String select2(@PathVariable("boardNo") int boardNo, Model model) {
+		model.addAttribute("boardNo",boardNo);
+		return "board/select";
+	}
+	
+	@RequestMapping(value="/update")
+	public String update() {
+		return "board/update";
+	}
+	
+	@RequestMapping(value="/delete")
+	public String delete(Model model) {
+		return "board/delete";
+	}
+	
+	
+	
+	
+	
+
+}

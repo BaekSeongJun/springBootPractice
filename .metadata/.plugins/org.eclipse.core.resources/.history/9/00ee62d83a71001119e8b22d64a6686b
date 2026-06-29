@@ -1,0 +1,13 @@
+package com.zeus.dto;
+
+public class BoardDTO {
+	private int boardNo;
+	private String title;
+	private String content;
+	private String writer;
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNo=" + boardNo + ", title=" + title + ", content=" + content + ", writer=" + writer
+				+ "]";
+	}
+}

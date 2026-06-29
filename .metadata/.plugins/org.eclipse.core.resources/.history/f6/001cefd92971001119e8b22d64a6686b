@@ -1,0 +1,21 @@
+package com.zeus.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.java.Log;
+
+@Log
+@Controller
+@RequestMapping(value="/board")
+public class BoardController {
+	
+	@RequestMapping(value="/insert")
+	public String insert() {
+		return "insert";
+	}
+	
+	
+	
+
+}

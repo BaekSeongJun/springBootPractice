@@ -1,0 +1,16 @@
+package com.zeus.domain;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class BoardTest {
+	
+	@Test
+	public void test1() {
+		Board board = new Board(); 
+		board.setBoardNo(10);
+		board.setTitle("kdj");
+		System.out.printf("%d  %s \n",board.getBoardNo(), board.getTitle());
+	}
+}

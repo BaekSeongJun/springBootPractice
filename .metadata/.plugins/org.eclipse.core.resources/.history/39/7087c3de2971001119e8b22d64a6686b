@@ -1,0 +1,38 @@
+package com.zeus.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import ch.qos.logback.core.model.Model;
+import lombok.extern.java.Log;
+
+@Log
+@Controller
+@RequestMapping(value="/board")
+public class BoardController {
+	
+	@RequestMapping(value="/insert")
+	public String insert() {
+		return "insert";
+	}
+	
+	@RequestMapping(value="/update")
+	public String update() {
+		return "update";
+	}
+	
+	@RequestMapping(value="/delete")
+	public String delete(Model model) {
+		return "delete";
+	}
+	
+	
+	@RequestMapping(value="/select")
+	public String select(Model model) {
+		return "select";
+	}
+	
+	
+	
+
+}
