@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -21,4 +22,5 @@ public class BoardDTO {
 	private ArrayList<String> hobby;
 	private boolean foreigner;
 	private ArrayList<Address> address;
+	private ArrayList<MultipartFile> picture;
 }
