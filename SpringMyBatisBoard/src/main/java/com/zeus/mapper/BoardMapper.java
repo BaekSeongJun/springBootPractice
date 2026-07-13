@@ -1,0 +1,13 @@
+package com.zeus.mapper;
+
+import java.util.List;
+
+import com.zeus.domain.Board;
+
+public interface BoardMapper {
+	public int insert(Board board) throws Exception;
+	public Board select(Board board) throws Exception;
+	public int update(Board board) throws Exception;
+	public int delete(Board board) throws Exception;
+	public List<Board> list() throws Exception;
+}
