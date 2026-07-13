@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/* 노션 라이트모드 디자인 시스템 변수 정의 */
+:root {
+    --notion-bg: #ffffff;
+    --notion-text: #37352f;
+    --notion-text-light: #787774;
+    --notion-border: rgba(55, 53, 47, 0.09);
+    --notion-border-strong: rgba(55, 53, 47, 0.16);
+    --notion-bg-hover: rgba(55, 53, 47, 0.04);
+    --notion-badge-bg: rgba(235, 236, 235, 0.6);
+    --notion-delete-hover: rgba(235, 87, 87, 0.08);
+    --notion-delete-text: #eb5757;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: var(--notion-bg);
+    color: var(--notion-text);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.notion-detail-wrapper {
+    width: 100%;
+    max-width: 720px; /* 읽기 좋은 최적의 본문 너비 */
+    padding: 80px 24px;
+    box-sizing: border-box;
+}
+
+/* 📄 노션 페이지 헤더 */
+.notion-page-header {
+    margin-bottom: 24px;
+}
+
+.notion-page-icon {
+    font-size: 64px; /* 노션 특유의 거대한 페이지 아이콘 */
+    display: block;
+    margin-bottom: 12px;
+    user-select: none;
+}
+
+.notion-page-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+/* 📑 메타데이터 속성 영역 */
+.notion-properties {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 0;
+    margin-bottom: 36px;
+    border-bottom: 1px solid var(--notion-border);
+}
+
+.notion-property-row {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.property-label {
+    width: 100px;
+    color: var(--notion-text-light);
+    user-select: none;
+}
+
+.property-value {
+    color: var(--notion-text);
+}
+
+.property-value-no {
+    color: var(--notion-text-light);
+    font-family: monospace;
+}
+
+/* 작성자 뱃지 */
+.writer-badge {
+    background-color: var(--notion-badge-bg);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.date-text {
+    font-size: 13.5px;
+}
+
+/* 🖋️ 본문 영역 */
+.notion-content-area {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--notion-text);
+    min-height: 250px;
+    word-break: break-all;
+    white-space: pre-wrap; /* 줄바꿈 및 공백 유지 */
+    margin-bottom: 48px;
+}
+
+/* 🛠️ 버튼 영역 */
+.notion-action-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--notion-border-strong);
+    padding-top: 20px;
+}
+
+.right-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* 미니멀 버튼 기본 공통 스타일 */
+.notion-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--notion-text);
+    text-decoration: none;
+    border: 1px solid var(--notion-border-strong);
+    border-radius: 4px;
+    background-color: transparent;
+    transition: background 0.1s ease-in;
+    box-sizing: border-box;
+}
+
+.notion-btn:hover {
+    background-color: var(--notion-bg-hover);
+}
+
+/* 삭제 버튼 전용 스타일 */
+.notion-btn.delete-btn {
+    border-color: transparent;
+    color: var(--notion-delete-text);
+}
+
+.notion-btn.delete-btn:hover {
+    background-color: var(--notion-delete-hover);
+}
