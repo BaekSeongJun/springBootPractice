@@ -17,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@MapperScan(basePackages = "com.zeus.mapper")
 public class BoardController {
 
 	@Autowired
