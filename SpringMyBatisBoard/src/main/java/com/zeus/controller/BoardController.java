@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.zeus.dto.BoardDTO;
@@ -102,5 +103,12 @@ public class BoardController {
 			model.addAttribute("msg","실패ㅜㅜ");
 		}
 		return (result)?("board/select"):("board/fail");
+	}
+
+	@PostMapping(value = "/board/search")
+	public String boardSearch(BoardDTO boardDTO, Model model) throws Exception{
+		List<BoardDTO> list = boardService.search(boardDTO);
+		model.addAttribute("list", list);
+		return "board/list";
 	}
 }

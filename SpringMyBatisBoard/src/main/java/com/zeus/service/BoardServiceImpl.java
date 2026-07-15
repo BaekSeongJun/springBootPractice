@@ -96,4 +96,28 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return list2;
 	}
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<BoardDTO> search(BoardDTO boardDTO) throws Exception{
+		List<Board> list = boardMapper.search(boardDTO.getTitle());
+
+		if(list.size() <= 0) {
+			return null;
+		}
+		List<BoardDTO> list2 = new ArrayList<>();
+
+		for(Board board : list) {
+			BoardDTO _boardDTO = new BoardDTO();
+			_boardDTO.setBoardNo(board.getBoardNo());
+			_boardDTO.setContent(board.getContent());
+			_boardDTO.setRegDate(board.getRegDate());
+			_boardDTO.setTitle(board.getTitle());
+			_boardDTO.setWriter(board.getWriter());
+			list2.add(_boardDTO);
+		}
+
+		return list2;
+	}
 }

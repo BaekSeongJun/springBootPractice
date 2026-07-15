@@ -19,4 +19,6 @@ public interface BoardService {
 
 	//list
 	public List<BoardDTO> list() throws Exception;
+
+	public List<BoardDTO> search(BoardDTO boardDTO) throws Exception;
 }
