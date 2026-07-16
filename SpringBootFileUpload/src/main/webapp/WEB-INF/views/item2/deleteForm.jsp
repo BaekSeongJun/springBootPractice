@@ -29,7 +29,7 @@
 <form:form modelAttribute="item" action="delete">
     <form:hidden path="itemId" />
     <table>
-        <tr>                                                                                                                                                                                                   
+        <tr>
             <td>상품명</td>
             <td><form:input path="itemName" disabled="true" /></td>
         </tr>
