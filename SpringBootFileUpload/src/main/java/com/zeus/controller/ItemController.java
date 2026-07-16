@@ -93,6 +93,41 @@ public class ItemController {
 		return "item/success";
 	}
 
+	@GetMapping("/updateForm")
+	public String itemUpdateForm(Item item, Model model) throws Exception {
+		item = itemService.select(item);
+		model.addAttribute("item", item);
+		return "item/updateForm";
+	}
+
+	@PostMapping("/update")
+	public String itemUpdate(Item item, Model model) throws Exception {
+		//1.사용자가 선택한 파일객체를 가져오고, 기존에 있는 중복되지 않는 이미지파일명을 가져온다.
+		MultipartFile file = item.getPicture();
+		String oldFileName = item.getPictureUrl();
+		//2.사용자가 새로운 파일을 선택을 했는지 체크(기존의 파일을 스토리지에서 점검
+		if(file != null && file.getSize() > 0) {
+			String createdFileName = uploadFile(file.getOriginalFilename(), file.getBytes());
+			item.setPictureUrl(createdFileName);
+			//옛날 파일을 삭제
+			if (oldFileName != null) {
+				File oldFile = new File(uploadPath + File.separator + oldFileName);
+				if (oldFile.exists()) {
+					oldFile.delete();
+				}
+			}
+		}
+		//업데이트
+
+		boolean result = itemService.update(item);
+		if(result) {
+			model.addAttribute("msg", "수정이 완료되♘습니다.");
+		}else {
+			model.addAttribute("msg", "수정에 실패되♘습니다.");
+		}
+		return "item/success";
+	}
+
 	@GetMapping("/display")
 	@ResponseBody
 	public ResponseEntity<byte[]> itemDisplay(Item item, Model model) throws Exception {
