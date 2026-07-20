@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.zeus.domain.Board;
 import com.zeus.dto.BoardDTO;
+import com.zeus.exception.BoardRecordNotFoundException;
 import com.zeus.mapper.BoardMapper;
 
 //데이터베이스에 요청하는부분(비지니스 로직)
@@ -38,10 +39,15 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	@Transactional(readOnly = true)
 	public BoardDTO select(BoardDTO boardDTO) throws Exception {
+
 		// return repository.getOne(boardNo);
 		Board board = new Board();
 		board.setBoardNo(boardDTO.getBoardNo());
 		board = boardMapper.select(board);
+
+		if(board == null) {
+			throw new BoardRecordNotFoundException(boardDTO.getBoardNo() + " 번 게시글은없는 게시글입니다.");
+		}
 
 		boardDTO.setBoardNo((board.getBoardNo()));
 		boardDTO.setTitle(board.getTitle());
